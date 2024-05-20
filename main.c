@@ -47,14 +47,15 @@ void set_map_struct(t_map *map, char **lines)
 
     length = str_length(first_line);
 
-    map->num_lines = ft_atoi(first_line);
     map->full = first_line[length - 1];
     map->obstacle = first_line[length - 2];
     map->empty = first_line[length - 3];
     
     lines++;
     map->matrix = lines;
-   //printf("%s",lines[0]);
+    
+    map->rows = ft_atoi(first_line);
+    map->cols = str_length(map->matrix[0]);
 }
 
 void    set_map(t_map *map, char *file_name, int file_size)
@@ -82,9 +83,12 @@ int		main(int argc, char *argv[])
     set_map(&map, filename, file_size);
 
 
-   print_map(map);
-     //print(map);
-//    solve_map();
+    // print_map(map);
+
+    printf("%s", "\n\n");
+    solve_map(map);
+
+
 
     // char    *first_line = get_first_line(file_descriptor);
     // set_map_settings(&map, first_line);

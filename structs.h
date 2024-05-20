@@ -4,7 +4,8 @@
 
 typedef struct s_map
 {
-    int		num_lines; // aka max square side len
+    int		rows; // aka max square side len
+    int     cols;
 
 	char    empty;
     char    obstacle;

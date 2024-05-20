@@ -11,4 +11,7 @@ int     str_length(char *str);
 char	**ft_split(char *str, char *charset);
 
 void    print_map(t_map map);
+int		get_min(int a, int b, int c);
+t_map   solve_map(t_map map);
+
 #endif
