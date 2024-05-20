@@ -61,5 +61,11 @@ int     str_length(char *str)
     return i;
 }
 
+
+
+
+
+
+
 // todo: is_char_printable
 // todo: get_file_size
