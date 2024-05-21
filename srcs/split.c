@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ataher <ataher@student.42amman.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/21 22:20:34 by ataher            #+#    #+#             */
+/*   Updated: 2024/05/21 23:34:44 by ataher           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "structs.h"
 #include "srcs.h"
 
@@ -81,5 +93,6 @@ char	**ft_split(char *str, char *charset)
 	array = (char **)malloc(sizeof(char *) * (words + 1));
 	array[words] = 0;
 	split_words(array, str, charset);
+	free(str);
 	return (array);
 }
