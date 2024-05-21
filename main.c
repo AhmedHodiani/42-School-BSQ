@@ -1,105 +1,44 @@
 #include "structs.h"
 #include "srcs.h"
 
-int open_file(char* file_name)
-{
-    int     file_descriptor;
 
-    file_descriptor = open(file_name, O_RDONLY);
-    file_open_error_checker(file_descriptor);
-
-    return file_descriptor;
-}
-
-int get_file_size(char* file_name)
-{
-    int file_size = 0;
-    char c;
-
-    int file_descriptor = open_file(file_name);
-
-    while (read(file_descriptor, &c, 1) != 0)
-        file_size++;
-
-    close(file_descriptor);
-    return file_size;
-}
 
 // char	**read_user_input()
 // {
 //     // todo
 // }
-
-// char	**read_file(char *filename)
-// {
-//     // todo
-// }
-
-
-void set_map_struct(t_map *map, char **lines)
+void	arg_skiper(int *argc, char ***argv)
 {
-    int length;
-    char *first_line = lines[0];
-
-    length = str_length(first_line);
-
-    map->full = first_line[length - 1];
-    map->obstacle = first_line[length - 2];
-    map->empty = first_line[length - 3];
-    
-    lines++;
-    map->matrix = lines;
-    
-    map->rows = ft_atoi(first_line);
-    map->cols = str_length(map->matrix[0]);
-}
-
-void    set_map(t_map *map, char *file_name, int file_size)
-{
-    char * buffer = (char *)malloc(sizeof(char) * file_size);
-    int file_descriptor = open_file(file_name);
-
-    read(file_descriptor, buffer, file_size);
-    char **lines = ft_split(buffer, "\n");
-    
-    set_map_struct(map, lines);
-    close(file_descriptor);
+	*argc = *argc - 1;
+	*argv = *argv + 1;
 }
 
 int		main(int argc, char *argv[])
 {
 	t_map		map;
-	char		*filename;
+    t_point     max;
+    int         i;
 
-	arg_skiper(&argc, &argv);
+	arg_skiper(&argc, &argv); // to skip executable name from argc and argv
 
-    filename = "example_file";
+    if (argc == 0)
+    {
+        // take input from user;
+    }
+    else 
+    {
+        // while loop through files;
+        i = 0;
+        while (i < argc)
+        {
+            read_map_file(&map, argv[i]);
+            max = solve_map(map);
+            fill_solution(map, max);
+            write(1, "\n", 1);
 
-    int file_size = get_file_size(filename);
-    set_map(&map, filename, file_size);
+            i++;
+        }
+    }
 
-
-    // print_map(map);
-
-    printf("%s", "\n\n");
-    solve_map(map);
-
-
-
-    // char    *first_line = get_first_line(file_descriptor);
-    // set_map_settings(&map, first_line);
-    // get_map_matrix(&map, file_descriptor);
-
-    // if (argc == 0)
-    // {
-    //     // take input from user;
-    // }
-    // else 
-    // {
-    //     // while loop through files;
-    // }
-
-
-	// free memory map please please dont foooorgett!!
 	return (0);
 }

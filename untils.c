@@ -9,11 +9,7 @@ void    print_string(char *str)
         write(1, &str[i], 1);
 }
 
-void	arg_skiper(int *argc, char ***argv)
-{
-	*argc = *argc - 1; // to skip ./bsq argc
-	*argv = *argv + 1; // to skip ./bsq argv
-}
+
 
 void    allocation_error_checker(void * pointer)
 {

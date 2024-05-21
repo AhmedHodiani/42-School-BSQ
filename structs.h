@@ -19,6 +19,7 @@ typedef struct s_point
 {
     int x;
     int y;
+    int value;
 }   t_point;
 
 typedef struct s_square
