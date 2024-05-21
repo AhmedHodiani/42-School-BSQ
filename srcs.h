@@ -1,5 +1,9 @@
 #ifndef SRCS_H
 #define SRCS_H
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
 #include "structs.h"
 
 void    print_string(char *str);

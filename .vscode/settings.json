@@ -2,6 +2,7 @@
     "files.associations": {
         "unistd.h": "c",
         "stdbool.h": "c",
-        "structs.h": "c"
+        "structs.h": "c",
+        "srcs.h": "c"
     }
 }

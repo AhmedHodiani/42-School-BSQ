@@ -12,7 +12,7 @@ void    print_map(t_map map)
     }
 }
 
-int   **create_buffer(ori_rows, ori_cols)
+int   **create_buffer(int ori_rows, int ori_cols)
 {
     int **buffer;
     int rows = ori_rows + 1;
@@ -60,15 +60,10 @@ void        print_buffer(int **buffer, int row_size, int col_size)
 
 t_map   solve_map(t_map map)
 {
-
     int **buffer = create_buffer(map.rows, map.cols);
 
-    // buffer[0][0] = 9;
-
-    // fill_buffer(buffer, map.rows + 1, map.cols + 1);
     print_buffer(buffer, map.rows + 1, map.cols + 1);
     printf("%s", "\n");
-
 
     int row_indexor = 0;
     while (row_indexor < map.rows)

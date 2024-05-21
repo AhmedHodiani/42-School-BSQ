@@ -1,7 +1,5 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
+#include "structs.h"
+#include "srcs.h"
 
 int	check_sep(char c, char *charset)
 {
